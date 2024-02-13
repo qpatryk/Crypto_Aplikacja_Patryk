@@ -32,10 +32,16 @@ const Home = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem("userData", JSON.stringify(userData));
-        window.location.href = "/";
+        window.location.href = "/crypto";
     }
 
     useEffect(getData, []);
+    useEffect(() => {
+        const temp = JSON.parse(localStorage.getItem("userData"));
+        if (temp) {
+            window.location.href = "/crypto";
+        }
+    }, [])
 
     return (
         <div>
